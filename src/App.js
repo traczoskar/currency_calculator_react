@@ -8,7 +8,7 @@ import Result from "./Result";
 function App() {
   return (
     <Container>
-      <body className="body--backgroundImage">
+      <body>
       <Form
         title="CURRENCY CALCULATOR"
         data={

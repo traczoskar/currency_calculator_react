@@ -9,6 +9,7 @@ html {
 body {
   font-family: 'OpenSans', sans-serif;
   margin: 0 auto;
-  background-color: #222;
-  color: #ffffff
+  color: #ffffff;
+  background-image: url("/src/images/background.jpg");
+  background-size: cover;
 }
