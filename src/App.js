@@ -8,7 +8,7 @@ import Result from "./Result";
 function App() {
   return (
     <Container>
-      <body>
+      <main>
       <Form
         title="CURRENCY CALCULATOR"
         data={
@@ -24,7 +24,7 @@ function App() {
           </>
         }
       />
-    </body>
+    </main>
     </Container>
   );
 }
