@@ -16,7 +16,11 @@ const Form = ({ title, calculateResult, result }) => {
 
   return (
     <form className="form" onSubmit={onSubmit}>
-      <img src="/images/header_logo.png" alt="Logo" className="form__logo" />
+      <img
+        src="%PUBLIC_URL%/images/header_logo.png"
+        alt="Logo"
+        className="form__logo"
+      />
       <legend className="form__legend form--separator">{title}</legend>
       <label className="form__label">
         <span className="form__label--description">Amount in PLN:</span>
@@ -53,7 +57,7 @@ const Form = ({ title, calculateResult, result }) => {
       <button className="form__button">
         <img
           className="form__button--icon"
-          src="/images/exchange_icon.png"
+          src="%PUBLIC_URL%/images/exchange_icon.png"
           alt="exchange_icon"
         />
         Calculate
