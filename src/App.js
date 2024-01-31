@@ -1,32 +1,30 @@
-import Container from "./Container";
+import { useState } from "react";
 import Form from "./Form";
-import Amount from "./Amount";
-import Currency from "./Currency";
-import Calculate from "./Calculate";
-import Result from "./Result";
+import { currencies } from "./currencies";
 
 function App() {
+
+  const [result, setResult] = useState();
+
+  const calculateResult = (selectedCurrency, amount) => {
+    const currencyRate = currencies.find((currency) => currency.symbol === selectedCurrency).ratio;
+
+    setResult({
+      sourceAmount: +amount,
+      targetAmount: amount / currencyRate,
+      currency: selectedCurrency,
+    });
+  };
+
   return (
-    <Container>
-      <main>
+    <main>
       <Form
         title="CURRENCY CALCULATOR"
-        data={
-          <>
-            <Amount />
-            <Currency />
-          </>
-        }
-        calculation={
-          <>
-            <Calculate />
-            <Result />
-          </>
-        }
+        calculateResult={calculateResult}
+        result={result}
       />
     </main>
-    </Container>
   );
-}
+};
 
 export default App;
