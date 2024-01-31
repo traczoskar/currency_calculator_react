@@ -1,0 +1,12 @@
+.result {
+    font-weight: 700;
+    font-size: 18px;
+    color: rgb(0, 175, 76);
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin: 0 auto;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
