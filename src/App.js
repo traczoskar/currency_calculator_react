@@ -3,16 +3,18 @@ import Form from "./Form";
 import { currencies } from "./currencies";
 
 function App() {
-
   const [result, setResult] = useState();
 
   const calculateResult = (selectedCurrency, amount) => {
-    const currencyRate = currencies.find((currency) => currency.symbol === selectedCurrency).ratio;
-
+    const currencyElement = currencies.find(
+      (currency) => currency.symbol === selectedCurrency
+    );
+    const currencyRate = currencyElement.ratio;
     setResult({
       sourceAmount: +amount,
       targetAmount: amount / currencyRate,
       currency: selectedCurrency,
+      flag: currencyElement.flag,
     });
   };
 
@@ -25,6 +27,6 @@ function App() {
       />
     </main>
   );
-};
+}
 
 export default App;
