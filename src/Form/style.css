@@ -1,0 +1,83 @@
+.form {
+    margin: 150px auto;
+    max-width: 500px;
+    width: 100%;
+    background-color: #222;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+}
+
+.form__fieldset {
+    border: 2px solid firebrick;
+    border-radius: 5px;
+    padding: 20px 10px;
+}
+
+.form__legend {
+    margin: 0 auto;
+    background-color: firebrick;
+    padding: 10px 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.form__label {
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.form__input {
+    max-width: 300px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    background-color: #aaa;
+    margin: 10px 20px auto;
+    border-radius: 5px;
+    color: #333;
+}
+
+.form__input:required {
+    border: 1px solid #ccc;
+}
+
+.form__select {
+    max-width: 230px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    background-color: #aaa;
+    margin: 10px 20px auto;
+    border-radius: 5px;
+    color: #333
+}
+
+.form__select:required {
+    border: 1px solid #ccc;
+}
+
+
+.form__button {
+    border: 1px solid #888;
+    border-radius: 8px;
+    background-color: #d5d5d5;
+    padding: 8px 10px;
+    color: #000000;
+    font-size: 14px;
+    max-width: 600px;
+    width: 100%;
+    margin: 25px 0;
+}
+
+.form__button:hover {
+    background-color: firebrick;
+    color: #ffffff;
+}
+
+.form__button:active {
+    background-color: rgb(186, 82, 82);
+    color: #ffffff;
+}
