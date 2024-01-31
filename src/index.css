@@ -8,9 +8,9 @@ html {
 
 body {
   font-family: 'OpenSans', sans-serif;
-  margin: 0 auto;
-  color: #ffffff;
-  background-image: url("/src/images/background.jpg");
+  background-image: url("/public/images/background.jpg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
