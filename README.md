@@ -1,6 +1,59 @@
-# Getting Started with Create React App
+# Currency Calculator in React.js
+
+### **Description**
+
+Currency Calculator is a demo project of a currency converter made in **React.js** library. You can easily type in the amount of PLN (polish złoty), choose between 3 different and the most popular currencies, then just click "*Calculat*e" button and the magic will happen. My application will give you result in one of three currencies that you've choosen.
+
+### **[Currency Calculator - App link](https://traczoskar.github.io/currency_calculator_react/)**
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Features
+
+- easily converts PLN up to amount of "10.000.000.000"
+- you can choose the currency between **EUR / GBP / USD**
+- animated app logo
+- animated and interactive button
+- animated country flag in the result window
+- app is adapted to be responsive on mobile devices
+
+For now the calculator works only one way: calculating PLN to other three currencies. In future some more advanced features will be added.
+
+**Below you can see how it looks on desktop:**
+
+![App design](/app_start.png)
+
+## How to use?
+
+1. Enter the amount that you want to exchange in the first input window "**Amount in PLN:**".
+2. Choose the currency from listed in select window below. You can pick one of **EUR / USD / GBP**.
+3. Click the animated button "**Calculate**".
+4. Your data is being processed and calculated.
+5. Below the button app will render a white window with your result:
+
+- **first** - amount you entered in PLN
+- **second** - info
+- **third** - your result in currency you've choosen
+- **fourth** - a country flag of the currency
+
+**The App with rendered result:**
+
+![App design](/app_working.png)
+
+## Used technologies and conventions
+
+- **React.js:** Components, JSX, React DOM rendering
+- **Create React App**
+- **npm**
+- **Node.js**
+- **Babel**
+- **BEM**convention
+- **camelCase** class and functions naming
+- **CSS:** Grid and Flex
+- **CSS:** Animations and transitions
+- **CSS:** (normalize.css) applied
+- **CSS:** (border-box: box-sizing) applied
+- **JS ES6 Features:** (arrays, methods, spread syntax, objects, arrow functions, immutabililty, merging, JS Modules)
 
 ## Available Scripts
 
@@ -13,7 +66,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
 
 ### `npm run build`
 
