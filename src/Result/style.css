@@ -6,7 +6,7 @@
     font-weight: 700;
     font-size: 18px;
     background-color: #fff;
-    border: 1px solid #888;
+    border: 1px solid #ccc;
     border-radius: 2px;
     padding: 5px;
     width: 100%;
@@ -16,7 +16,7 @@
 
 .result__pln {
     color: #555;
-    font-size: 22px;
+    font-size: 17px;
     text-shadow: 1px 3px 20px rgba(0, 0, 0, 0.135);
     margin-top: 15px;
     margin-bottom: 15px;
@@ -24,7 +24,7 @@
 
 .result__info {
     color: #888;
-    font-size: 25px;
+    font-size: 17px;
     margin-top: 10px;
     margin-bottom: 0px;
     text-shadow: 1px 3px 20px rgba(0, 0, 0, 0.135);
@@ -32,15 +32,15 @@
 
 .result__exchanged {
     color: #403f3f;
-    font-size: 40px;
+    font-size: 34px;
     margin-top: 0px;
     margin-bottom: 0px;
     text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.135);
 }
 
 .result__flag {
-    width: 75px;
-    height: 75px;
+    width: 58px;
+    height: 58px;
     margin-top: 0px;
     margin-bottom: 20px;
     animation: subtleWavePulse 3s linear infinite;
