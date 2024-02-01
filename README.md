@@ -38,7 +38,7 @@ For now the calculator works only one way: calculating PLN to other three curren
 
 **The App with rendered result:**
 
-![App design](/app_working.png)
+![App design](/currency_calculator_gif.gif)
 
 ## Used technologies and conventions
 
