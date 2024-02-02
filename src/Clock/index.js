@@ -2,34 +2,31 @@ import { useState, useEffect } from "react";
 import "./style.css";
 
 export const Clock = () => {
-  const [promptDate, setPromptDate] = useState();
-  const [promptTime, setPromptTime] = useState();
-
-  const date = new Date();
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setPromptDate(
-        date.toLocaleDateString("en-US", {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })
-      );
-      setPromptTime(date.toLocaleTimeString());
+      setDate(new Date());
     }, 1000);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [date]);
+  }, []);
 
   return (
     <p className="clock">
       Today is&nbsp;
       <strong className="clock__prompt">
-        {promptDate}, {promptTime}
+        {date.toLocaleString("en-US", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        })}
       </strong>
     </p>
   );
