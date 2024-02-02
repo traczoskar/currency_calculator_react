@@ -12,6 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - easily converts PLN up to amount of "10.000.000.000"
 - you can choose the currency between **EUR / GBP / USD**
+- actual time and date is prompt in the right corner of app
 - animated app logo
 - animated and interactive button
 - animated country flag in the result window
@@ -43,10 +44,12 @@ For now the calculator works only one way: calculating PLN to other three curren
 ## Used technologies and conventions
 
 - **React.js:** Components, JSX, React DOM rendering
+- **React Hooks:** useState, useEffect
 - **Create React App**
 - **npm**
 - **Node.js**
 - **Babel**
+- **JS Async:** setInterval, setTimeOut
 - **BEM**convention
 - **camelCase** class and functions naming
 - **CSS:** Grid and Flex
