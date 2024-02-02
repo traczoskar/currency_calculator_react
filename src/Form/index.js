@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "../Result";
+import { Clock } from "../Clock";
 import "./style.css";
 
 const Form = ({ title, calculateResult, result }) => {
@@ -16,6 +17,7 @@ const Form = ({ title, calculateResult, result }) => {
 
   return (
     <form className="form" onSubmit={onSubmit}>
+      <Clock />
       <img src="/images/header_logo.png" alt="Logo" className="form__logo" />
       <legend className="form__legend form--separator">{title}</legend>
       <label className="form__label">
