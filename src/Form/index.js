@@ -2,7 +2,14 @@ import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "../Result";
 import { Clock } from "../Clock";
-import "./style.css";
+import { Wrapper } from "./styled.js";
+import { HeaderLogo } from "./styled.js";
+import { Legend } from "./styled.js";
+import { Label } from "./styled.js";
+import { InputName } from "./styled.js";
+import { InputWindow } from "./styled.js";
+import { Button } from "./styled.js";
+import { CalculateIcon } from "./styled.js";
 
 const Form = ({ title, calculateResult, result }) => {
   const [selectedCurrency, setSelectedCurrency] = useState(
@@ -16,14 +23,13 @@ const Form = ({ title, calculateResult, result }) => {
   };
 
   return (
-    <form className="form" onSubmit={onSubmit}>
+    <Wrapper onSubmit={onSubmit}>
       <Clock />
-      <img src="./images/header_logo.png" alt="Logo" className="form__logo" />
-      <legend className="form__legend form--separator">{title}</legend>
-      <label className="form__label">
-        <span className="form__label--description">Amount in PLN:</span>
-        <input
-          className="form__input"
+      <HeaderLogo src="./images/header_logo.png" alt="Logo" />
+      <Legend>{title}</Legend>
+      <Label>
+        <InputName>Amount in PLN:</InputName>
+        <InputWindow
           value={amount}
           onChange={({ target }) => setAmount(target.value)}
           type="number"
@@ -33,11 +39,11 @@ const Form = ({ title, calculateResult, result }) => {
           min="0.01"
           required
         />
-      </label>
-      <label className="form__label">
-        <span className="form__label--description">Choose currency:</span>
-        <select
-          className="form__select"
+      </Label>
+      <Label>
+        <InputName>Choose currency:</InputName>
+        <InputWindow
+          as="select"
           value={selectedCurrency}
           onChange={({ target }) => setSelectedCurrency(target.value)}
           name="currency"
@@ -49,19 +55,14 @@ const Form = ({ title, calculateResult, result }) => {
             </option>
           ))}
           ;
-        </select>
-      </label>
-
-      <button className="form__button">
-        <img
-          className="form__button--icon"
-          src="./images/exchange_icon.png"
-          alt="exchange_icon"
-        />
+        </InputWindow>
+      </Label>
+      <Button>
+        <CalculateIcon src="./images/exchange_icon.png" alt="exchange_icon" />
         Calculate
-      </button>
+      </Button>
       <Result result={result} />
-    </form>
+    </Wrapper>
   );
 };
 
