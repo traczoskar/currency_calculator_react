@@ -2,14 +2,18 @@ import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "../Result";
 import { Clock } from "../Clock";
-import { Wrapper } from "./styled.js";
-import { HeaderLogo } from "./styled.js";
-import { Legend } from "./styled.js";
-import { Label } from "./styled.js";
-import { InputName } from "./styled.js";
-import { InputWindow } from "./styled.js";
-import { Button } from "./styled.js";
-import { CalculateIcon } from "./styled.js";
+import {
+  Wrapper,
+  HeaderLogo,
+  Legend,
+  Label,
+  InputName,
+  InputWindow,
+  Button,
+  CalculateIcon,
+} from "./styled.js";
+import header_logo from "../images/header_logo.png";
+import exchange_icon from "../images/exchange_icon.png";
 
 const Form = ({ title, calculateResult, result }) => {
   const [selectedCurrency, setSelectedCurrency] = useState(
@@ -25,7 +29,7 @@ const Form = ({ title, calculateResult, result }) => {
   return (
     <Wrapper onSubmit={onSubmit}>
       <Clock />
-      <HeaderLogo src="./images/header_logo.png" alt="Logo" />
+      <HeaderLogo src={header_logo} alt="header_logo" />
       <Legend>{title}</Legend>
       <Label>
         <InputName>Amount in PLN:</InputName>
@@ -58,7 +62,7 @@ const Form = ({ title, calculateResult, result }) => {
         </InputWindow>
       </Label>
       <Button>
-        <CalculateIcon src="./images/exchange_icon.png" alt="exchange_icon" />
+        <CalculateIcon src={exchange_icon} alt="exchange_icon" />
         Calculate
       </Button>
       <Result result={result} />
