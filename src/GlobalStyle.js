@@ -17,5 +17,6 @@ export const GlobalStyle = createGlobalStyle`
         background-position: center;
         background-size: cover;
         background-attachment: fixed;
+        padding: 5px;
     }
 `;
