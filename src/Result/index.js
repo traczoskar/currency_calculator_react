@@ -1,18 +1,22 @@
-import "./style.css";
+import {
+  ResultContainer,
+  SourceAmount,
+  ResultInfo,
+  TargetAmount,
+  Flag,
+} from "./styled";
 
 export const Result = ({ result }) => (
   <div>
     {result && (
-      <div className="result">
-        <p className="result__pln">{result.sourceAmount.toFixed(2)} PLN</p>
-        <p className="result__info">After calculation:</p>
-        <p>
-          <strong className="result__exchanged">
-            {result.targetAmount.toFixed(2)} {result.currency}
-          </strong>
-        </p>
-        <img className="result__flag" src={result.flag} alt="Flag" />
-      </div>
+      <ResultContainer>
+        <SourceAmount>{result.sourceAmount.toFixed(2)} PLN</SourceAmount>
+        <ResultInfo>After calculation:</ResultInfo>
+        <TargetAmount>
+          {result.targetAmount.toFixed(2)} {result.currency}
+        </TargetAmount>
+        <Flag src={result.flag} alt="Flag" />
+      </ResultContainer>
     )}
   </div>
 );
