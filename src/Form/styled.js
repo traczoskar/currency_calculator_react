@@ -19,6 +19,7 @@ export const HeaderLogo = styled.img`
   height: 85px;
   margin-top: 20px;
   margin-bottom: 20px;
+  filter: drop-shadow(2px 4px 20px rgba(0, 0, 0, 0.15));
   animation: pulse 2s infinite;
 
   @keyframes pulse {
@@ -112,7 +113,7 @@ export const Button = styled.button`
   transition: 0.75s;
 
   &:hover {
-    background-color: hsl(89, 42%, 62%);
+    background-color: ${({ theme }) => theme.color.olivine};
     transform: scale(1.03);
     ${CalculateIcon} {
       transform: rotate(360deg) scale(1.2);
@@ -120,6 +121,6 @@ export const Button = styled.button`
   }
 
   &:active {
-    background-color: hsl(60, 1%, 30%);
+    background-color: ${({ theme }) => theme.color.boulder};
   }
 `;
