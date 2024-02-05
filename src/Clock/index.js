@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./style.css";
+import { ClockContainer, ClockPrompt } from "./styled";
 
 export const Clock = () => {
   const [date, setDate] = useState(new Date());
@@ -23,9 +23,9 @@ export const Clock = () => {
   }, []);
 
   return (
-    <p className="clock">
+    <ClockContainer>
       Today is&nbsp;
-      <strong className="clock__prompt">{formattedDate}</strong>
-    </p>
+      <ClockPrompt>{formattedDate}</ClockPrompt>
+    </ClockContainer>
   );
 };
