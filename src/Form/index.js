@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { currencies } from "../currencies";
 import { Result } from "../Result";
 import { Clock } from "../Clock";
@@ -20,10 +20,12 @@ const Form = ({ title, calculateResult, result }) => {
     currencies[0].symbol
   );
   const [amount, setAmount] = useState("");
+  const inputRef = useRef(null);
 
   const onSubmit = (event) => {
     event.preventDefault();
     calculateResult(selectedCurrency, amount);
+    inputRef.current.focus();
   };
 
   return (
@@ -36,6 +38,7 @@ const Form = ({ title, calculateResult, result }) => {
         <InputWindow
           value={amount}
           onChange={({ target }) => setAmount(target.value)}
+          ref={inputRef}
           type="number"
           placeholder="Enter the amount to exchange"
           step="0.01"
