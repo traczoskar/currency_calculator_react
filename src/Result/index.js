@@ -3,7 +3,6 @@ import {
   SourceAmount,
   ResultInfo,
   TargetAmount,
-  Flag,
 } from "./styled";
 
 export const Result = ({ result }) => (
@@ -15,7 +14,6 @@ export const Result = ({ result }) => (
         <TargetAmount>
           {result.targetAmount.toFixed(2)} {result.currency}
         </TargetAmount>
-        <Flag src={result.flag} alt="Flag" />
       </ResultContainer>
     )}
   </div>

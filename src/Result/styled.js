@@ -10,7 +10,7 @@ export const ResultContainer = styled.div`
   background-color: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.silver};
   border-radius: 2px;
-  padding: 5px;
+  padding: 20px;
   width: 100%;
   text-align: center;
   box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.1);
@@ -35,31 +35,23 @@ export const ResultInfo = styled.p`
 export const TargetAmount = styled.strong`
   color: ${({ theme }) => theme.color.mineshaft};
   font-size: 34px;
-  margin-top: 0px;
+  margin-top: 5px;
   margin-bottom: 10px;
   text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.135);
-`;
+  animation: zoomInZoomOut 2s infinite;
 
-export const Flag = styled.img`
-  width: 58px;
-  height: 58px;
-  margin-top: 0px;
-  margin-bottom: 20px;
-  filter: drop-shadow(2px 4px 20px rgba(0, 0, 0, 0.25));
-  animation: subtleWavePulse 3s linear infinite;
-
-  @keyframes subtleWavePulse {
-    0%,
+  @keyframes zoomInZoomOut {
+    0% {
+      color: ${({ theme }) => theme.color.mineshaft};
+      transform: scale(1);
+    }
+    50% {
+      color: ${({ theme }) => theme.color.boulder};
+      transform: scale(1.02);
+    }
     100% {
-      transform: rotate(0deg) scale(1);
-    }
-
-    33% {
-      transform: rotate(-5deg) scale(1.05);
-    }
-
-    66% {
-      transform: rotate(5deg) scale(1.1);
+      color: ${({ theme }) => theme.color.mineshaft};
+      transform: scale(1);
     }
   }
 `;
