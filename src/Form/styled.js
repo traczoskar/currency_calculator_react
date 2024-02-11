@@ -11,6 +11,10 @@ export const Wrapper = styled.form`
   border: 1px solid ${({ theme }) => theme.color.silver};
   border-radius: 5px;
   box-shadow: 2px 3px 20px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
+    margin: 5px auto;
+  }
 `;
 
 export const HeaderLogo = styled.img`
@@ -47,8 +51,46 @@ export const Legend = styled.legend`
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 25px;
+  text-align: center;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.135);
   border-bottom: 2px solid ${({ theme }) => theme.color.silver};
+`;
+
+export const ErrorInfo = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  color: ${({ theme }) => theme.color.mineshaft};
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.135);
+  animation: fadeInfadeOut 2s infinite;
+
+  @keyframes fadeInfadeOut {
+    0% {
+      color: ${({ theme }) => theme.color.mineshaft};
+      opacity: 0;
+    }
+    50% {
+      color: ${({ theme }) => theme.color.tamarillo};
+      opacity: 1;
+    }
+    100% {
+      color: ${({ theme }) => theme.color.mineshaft};
+      opacity: 0;
+    }
+  }
+`;
+
+export const ErrorSubInfo = styled(ErrorInfo)`
+  color: ${({ theme }) => theme.color.boulder};
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  animation: none;
 `;
 
 export const Label = styled.label`
@@ -84,6 +126,11 @@ export const InputWindow = styled.input`
   border-radius: 5px;
   color: ${({ theme }) => theme.color.mineshaft};
   cursor: pointer;
+`;
+
+export const RatesInfo = styled.p`
+  font-size: 15px;
+  color: ${({ theme }) => theme.color.mineshaft};
 `;
 
 export const CalculateIcon = styled.img`
