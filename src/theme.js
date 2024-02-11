@@ -11,6 +11,7 @@ export const theme = {
     gray: "#888888",
     black: "#000000",
     olivine: "#9fc775",
+    tamarillo: "#991613",
   },
   breakpoint: {
     mobileMax: 767,
