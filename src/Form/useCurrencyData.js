@@ -12,22 +12,20 @@ export const useCurrencyData = () => {
     const fetchData = async () => {
       try {
         const response = await getApiData(); //sprawdź po zmianie ściezki czy to co się pobiera z API to JSON;
-        console.log("API Response:", response);
         setApiData({
           status: "downloaded",
           rates: response.data,
           date: response.meta.last_updated_at,
         });
-        console.log(getApiData());
+        console.log("getApiData content:", apiData);
       } catch (error) {
         setApiData({
           status: "error",
         });
       }
     };
-    fetchData();
 
-    // setTimeout(fetchData, 4500);
+    setTimeout(fetchData, 4500);
   }, []);
 
   return apiData;
