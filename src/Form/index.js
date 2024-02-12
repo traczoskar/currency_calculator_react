@@ -20,8 +20,7 @@ import header_logo from "../images/header_logo.png";
 import exchange_icon from "../images/exchange_icon.png";
 
 const Form = ({ title }) => {
-  const { apiData } = useCurrencyData();
-  console.log(apiData);
+  const apiData = useCurrencyData();
   const [result, setResult] = useState();
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [amount, setAmount] = useState("");
@@ -70,60 +69,55 @@ const Form = ({ title }) => {
       <Clock />
       <HeaderLogo src={header_logo} alt="header_logo" />
       <Legend>{title}</Legend>
-      {apiData || apiData.status === "loading" ? (
+      {apiData.status === "loading" ? (
         <Loading />
+      ) : apiData.status === "error" ? (
+        <>
+          <ErrorInfo>No currencies available at the moment.</ErrorInfo>
+          <ErrorSubInfo>Sorry, please try again later.</ErrorSubInfo>
+        </>
       ) : (
         <>
-          {apiData || apiData.stat === "downloaded" ? (
-            <>
-              <Label>
-                <InputName>Amount in PLN:</InputName>
-                <InputWindow
-                  value={amount}
-                  onChange={({ target }) => setAmount(target.value)}
-                  ref={inputRef}
-                  type="number"
-                  placeholder="Enter the amount to exchange"
-                  step="0.01"
-                  max="10000000000"
-                  min="0.01"
-                  required
-                />
-              </Label>
-              <Label>
-                <InputName>Choose currency:</InputName>
-                <InputWindow
-                  as="select"
-                  value={selectedCurrency}
-                  onChange={({ target }) => setSelectedCurrency(target.value)}
-                  name="currency"
-                  required
-                >
-                  {apiData.status === "downloaded" &&
-                    Object.keys(apiData.rates).map((currency) => (
-                      <option key={currency.code} value={currency.code}>
-                        {currency}
-                      </option>
-                    ))}
-                  ;
-                </InputWindow>
-              </Label>
-              {/* <RatesInfo>
+          <Label>
+            <InputName>Amount in PLN:</InputName>
+            <InputWindow
+              value={amount}
+              onChange={({ target }) => setAmount(target.value)}
+              ref={inputRef}
+              type="number"
+              placeholder="Enter the amount to exchange"
+              step="0.01"
+              max="10000000000"
+              min="0.01"
+              required
+            />
+          </Label>
+          <Label>
+            <InputName>Choose currency:</InputName>
+            <InputWindow
+              as="select"
+              value={selectedCurrency}
+              onChange={({ target }) => setSelectedCurrency(target.value)}
+              name="currency"
+              required
+            >
+              {apiData.rates &&
+                Object.keys(apiData.rates).map((currency) => (
+                  <option key={currency.code} value={currency.code}>
+                    {currency}
+                  </option>
+                ))}
+            </InputWindow>
+          </Label>
+          {/* <RatesInfo>
                 Exchange rates current as of:{" "}
                 <strong>{formattedDateOfData}</strong>
               </RatesInfo> */}
-              <Button>
-                <CalculateIcon src={exchange_icon} alt="exchange_icon" />
-                Calculate
-              </Button>
-              <Result result={result} />
-            </>
-          ) : (
-            <>
-              <ErrorInfo>No currencies available at the moment.</ErrorInfo>
-              <ErrorSubInfo>Sorry, please try again later.</ErrorSubInfo>
-            </>
-          )}
+          <Button>
+            <CalculateIcon src={exchange_icon} alt="exchange_icon" />
+            Calculate
+          </Button>
+          <Result result={result} />
         </>
       )}
     </Wrapper>
