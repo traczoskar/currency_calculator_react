@@ -9,6 +9,10 @@ export const ClockContainer = styled.p`
   color: ${({ theme }) => theme.color.mineshaft};
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.135);
   padding: 2px 0 10px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileReallySmall}px) {
+    font-size: 8px;
+  }
 `;
 
 export const ClockPrompt = styled.strong`
