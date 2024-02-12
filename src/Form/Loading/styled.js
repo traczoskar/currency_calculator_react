@@ -21,6 +21,12 @@ export const StyledLoading = styled.div`
       opacity: 0;
     }
   }
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
+    padding: 15px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileReallySmall}px) {
+    padding: 0;
+  }
 `;
 
 export const LoadingText = styled.p`
@@ -30,6 +36,14 @@ export const LoadingText = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
+    transform: scale(0.9);
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileReallySmall}px) {
+    transform: scale(0.75);
+    font-size: 15px;
+  }
 `;
 
 export const LoadingAnimation = styled.div`
