@@ -128,8 +128,12 @@ export const InputWindow = styled.input`
   cursor: pointer;
 `;
 
-export const RatesInfo = styled.p`
-  font-size: 15px;
+export const RatesDate = styled.p`
+  padding: 5px;
+  text-align: center;
+  font-size: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   color: ${({ theme }) => theme.color.mineshaft};
 `;
 
@@ -154,7 +158,7 @@ export const Button = styled.button`
   font-size: 18px;
   font-weight: 700;
   width: 100%;
-  margin-top: 35px;
+  margin-top: 10px;
   margin-bottom: 25px;
   cursor: pointer;
   transition: 0.75s;

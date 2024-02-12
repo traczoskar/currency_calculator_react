@@ -8,7 +8,7 @@ import {
   Label,
   InputName,
   InputWindow,
-  RatesInfo,
+  RatesDate,
   Button,
   CalculateIcon,
   ErrorInfo,
@@ -103,10 +103,10 @@ const Form = ({ title }) => {
                 ))}
             </InputWindow>
           </Label>
-          <RatesInfo>
+          <RatesDate>
             Exchange rates current as of:{" "}
             <strong>{getExchangeRatesDate()}</strong>
-          </RatesInfo>
+          </RatesDate>
           <Button>
             <CalculateIcon src={exchange_icon} alt="exchange_icon" />
             Calculate
