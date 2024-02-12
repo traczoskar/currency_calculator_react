@@ -31,23 +31,17 @@ const Form = ({ title }) => {
     inputRef.current.focus();
   };
 
-  // const getExchangeRatesDate = () => {
-  //   if (!loading) {
-  //     const dateOfData = new Date(currenciesDownloaded.meta.last_updated_at);
-  //     return dateOfData;
-  //   }
-  // };
-  // console.log(getExchangeRatesDate());
-
-  // const formattedDateOfData = dateOfData.toLocaleDateString("en-US", {
-  //   weekday: "long",
-  //   day: "numeric",
-  //   month: "long",
-  //   year: "numeric",
-  //   hour: "2-digit",
-  //   minute: "2-digit",
-  //   second: "2-digit",
-  // });
+  const getExchangeRatesDate = () => {
+    if (apiData.status === "downloaded") {
+      const dateOfData = new Date(apiData.date).toLocaleDateString("en-US", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+      return dateOfData;
+    }
+  };
 
   const calculateResult = () => {
     const getCurrencyRate = (key) =>
@@ -109,10 +103,10 @@ const Form = ({ title }) => {
                 ))}
             </InputWindow>
           </Label>
-          {/* <RatesInfo>
-                Exchange rates current as of:{" "}
-                <strong>{formattedDateOfData}</strong>
-              </RatesInfo> */}
+          <RatesInfo>
+            Exchange rates current as of:{" "}
+            <strong>{getExchangeRatesDate()}</strong>
+          </RatesInfo>
           <Button>
             <CalculateIcon src={exchange_icon} alt="exchange_icon" />
             Calculate
