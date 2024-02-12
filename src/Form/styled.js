@@ -96,9 +96,9 @@ export const ErrorSubInfo = styled(ErrorInfo)`
 export const Label = styled.label`
   display: grid;
   gap: 15px;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 2fr;
   font-weight: 400;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-top: 15px;
@@ -118,8 +118,9 @@ export const InputName = styled.span`
 
 export const InputWindow = styled.input`
   font-size: 15px;
+  max-width: 500px;
   width: 100%;
-  padding: 15px;
+  padding: 13px;
   border: 1px solid ${({ theme }) => theme.color.darksilver};
   background-color: ${({ theme }) => theme.color.mercury};
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
