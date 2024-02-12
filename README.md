@@ -2,7 +2,7 @@
 
 ### **Description**
 
-Currency Calculator is a demo project of a currency converter made in **React.js** library. You can easily type in the amount of PLN (polish złoty), choose between 3 different and the most popular currencies, then just click "*Calculat*e" button and the magic will happen. My application will give you result in one of three currencies that you've choosen.
+Currency Calculator is a demo project of a currency converter made in **React.js** library. After you open the App it will fetch the current rates data from outside API. You can easily type in the amount of PLN (polish złoty), choose between many different currencies from API, then just click **"Calculate"** button and the magic will happen. My application will give you the result. There is also actual time prompt in the upper right corner of the app window and currency exchange current date over the calculate button.
 
 ### **[Currency Calculator - App link](https://traczoskar.github.io/currency_calculator_react/)**
 
@@ -11,14 +11,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Features
 
 - easily converts PLN up to amount of "10.000.000.000"
-- you can choose the currency between **EUR / GBP / USD**
-- actual time and date is prompt in the right corner of app
+- you can choose the currency between many different currencies from all over world (downloaded from outside API)
+- actual time and date is prompt in the upper right corner of app
+- current date of downloaded exchange rates over the calculate button
 - animated app logo
 - animated and interactive button
-- animated country flag in the result window
+- animated result
 - app is adapted to be responsive on mobile devices
-
-For now the calculator works only one way: calculating PLN to other three currencies. In future some more advanced features will be added.
+- error handling: rendered special window if any error occurs
+- loading animated window while data is fetched
 
 **Below you can see how it looks on desktop:**
 
@@ -27,7 +28,7 @@ For now the calculator works only one way: calculating PLN to other three curren
 ## How to use?
 
 1. Enter the amount that you want to exchange in the first input window "**Amount in PLN:**".
-2. Choose the currency from listed in select window below. You can pick one of **EUR / USD / GBP**.
+2. Choose the currency from listed in select window below.
 3. Click the animated button "**Calculate**".
 4. Your data is being processed and calculated.
 5. Below the button app will render a white window with your result:
@@ -35,27 +36,34 @@ For now the calculator works only one way: calculating PLN to other three curren
 - **first** - amount you entered in PLN
 - **second** - info
 - **third** - your result in currency you've choosen
-- **fourth** - a country flag of the currency
 
-**The App with rendered result:**
+**The App with loading window and rendered result:**
 
 ![App design](/currency_calculator_gif.gif)
+
+**Error handling while data isn't fetched properly**
+
+![App design](/currency_calculator_gif_error.gif)
 
 ## Used technologies and conventions
 
 - **React.js:** Components, JSX, React DOM rendering
-- **React Hooks:** useState, useEffect
+- **React Hooks:** useState, useEffect, useRef
+- **CustomHooks**
 - **Create React App**
+- **Axios**
 - **npm**
 - **Node.js**
 - **Babel**
-- **JS Async:** setInterval, setTimeOut
+- **Error handling:** try...catch / throw / and other conditions
+- **JS Async:** asynchronous functions, Promises, data fetching, setInterval, setTimeOut
 - **BEM**convention
 - **camelCase** class and functions naming
 - **CSS:** Grid and Flex
-- **CSS:** Animations and transitions
+- **CSS:** Animations and transitions, keyframes
 - **CSS:** (normalize.css) applied
 - **CSS:** (border-box: box-sizing) applied
+- **CSS:** media queries
 - **JS ES6 Features:** (arrays, methods, spread syntax, objects, arrow functions, immutabililty, merging, JS Modules)
 
 ## Available Scripts
