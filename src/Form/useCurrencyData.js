@@ -4,8 +4,6 @@ import { getApiData } from "./getApiData";
 export const useCurrencyData = () => {
   const [apiData, setApiData] = useState({
     status: "loading",
-    rates: null,
-    date: null,
   });
 
   useEffect(() => {
