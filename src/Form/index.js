@@ -97,7 +97,7 @@ const Form = ({ title }) => {
             >
               {apiData.rates &&
                 Object.keys(apiData.rates).map((currency) => (
-                  <option key={currency.code} value={currency.code}>
+                  <option key={currency} value={currency}>
                     {currency}
                   </option>
                 ))}
