@@ -49,6 +49,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - **React.js:** Components, JSX, React DOM rendering
 - **React Hooks:** useState, useEffect, useRef
+- **styled-components**
 - **CustomHooks**
 - **Create React App**
 - **Axios**
