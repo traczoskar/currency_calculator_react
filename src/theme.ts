@@ -17,4 +17,4 @@ export const theme = {
     mobileMax: 767,
     mobileReallySmall: 370,
   },
-};
+} as const;
