@@ -1,10 +1,10 @@
-# 💵 Currency Calculator in React.js ♻️ 
+# 💵 Currency Calculator in React.js ♻️
 
 ### 📝&nbsp; **Description**
 
 Currency Calculator is a demo project of a currency converter made in **React.js** library. After you open the App it will fetch the current rates data from outside API. You can easily type in the amount of PLN (polish złoty), choose between many different currencies from API, then just click **"Calculate"** button and the magic will happen. My application will give you the result. There is also actual time prompt in the upper right corner of the app window and currency exchange current date over the calculate button.
 
-### 🚀&nbsp; **[Currency Calculator - App link](https://traczoskar.github.io/currency_calculator_react/)**
+### 🚀&nbsp; **[Currency Calculator - App link](https://traczoskar.github.io/currency_calculator_react/)** &nbsp; 👈
 
 ## 🌟&nbsp; Features
 
@@ -21,7 +21,7 @@ Currency Calculator is a demo project of a currency converter made in **React.js
 
 **Below you can see how it looks on desktop:**
 
-![App design](/app_start.png)
+![App design](/github/app_start.png)
 
 ## 🤔&nbsp; How to use?
 
@@ -37,11 +37,11 @@ Currency Calculator is a demo project of a currency converter made in **React.js
 
 **The App with loading window and rendered result:**
 
-![App design](/currency_calculator_gif.gif)
+![App design](/github/currency_calculator_gif.gif)
 
 **Error handling while data isn't fetched properly**
 
-![App design](/currency_calculator_gif_error.gif)
+![App design](/github/currency_calculator_gif_error.gif)
 
 ## 🛠️&nbsp; Used technologies and conventions
 
@@ -59,7 +59,6 @@ Currency Calculator is a demo project of a currency converter made in **React.js
 ![CSS](https://img.shields.io/badge/CSS-1572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![normalize.css](https://img.shields.io/badge/normalize.css-00BCD4.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![media queries](https://img.shields.io/badge/media_queries-4CAF50.svg?style=for-the-badge&logo=css3&logoColor=white)
-
 
 - **React.js:** Components, JSX, React DOM rendering
 - **React Hooks:** useState, useEffect, useRef
@@ -79,7 +78,7 @@ Currency Calculator is a demo project of a currency converter made in **React.js
 - **CSS:** (border-box: box-sizing) applied
 - **CSS:** media queries
 - **JS ES6 Features:** (arrays, methods, spread syntax, objects, arrow functions, immutabililty, merging, JS Modules)
-  
+
 #### This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
