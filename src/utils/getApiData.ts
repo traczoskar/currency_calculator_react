@@ -7,7 +7,7 @@ export const getApiData = async () => {
   try {
     const response = await axios.get(apiURL);
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error while fetching data:", error.message);
   }
 };
