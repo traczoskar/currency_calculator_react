@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { Result } from "../Result";
-import { Clock } from "../Clock";
+import { Result } from "../Result/index.js";
+import { Clock } from "../Clock/index.js";
 import {
   Wrapper,
   HeaderLogo,
@@ -13,27 +13,47 @@ import {
   CalculateIcon,
   ErrorInfo,
   ErrorSubInfo,
-} from "./styled.js";
+} from "./styled";
 import { Loading } from "./Loading/index.js";
 import { useCurrencyData } from "./useCurrencyData.js";
 import header_logo from "../images/header_logo.png";
 import exchange_icon from "../images/exchange_icon.png";
 
-const Form = ({ title }) => {
-  const apiData = useCurrencyData();
-  const [result, setResult] = useState();
+interface FormProps {
+  title: string;
+}
+
+interface CurrencyData {
+  status: string;
+  rates?: { [key: string]: { code: string; value: number } };
+}
+
+interface ResultData {
+  sourceAmount: number;
+  targetAmount: number;
+  currency: string;
+}
+
+const Form = ({ title }: FormProps) => {
+  const apiData: CurrencyData = useCurrencyData();
+  const initialResult: ResultData = {
+    sourceAmount: 0,
+    targetAmount: 0,
+    currency: "",
+  };
+  const [result, setResult] = useState<ResultData>(initialResult);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [amount, setAmount] = useState("");
-  const inputRef = useRef(null);
-  const onSubmit = (event) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const onSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     calculateResult(selectedCurrency, amount);
-    inputRef.current.focus();
+    inputRef?.current?.focus();
   };
 
-  const getExchangeRatesDate = () => {
+  const getExchangeRatesDate = (): string | undefined => {
     if (apiData.status === "downloaded") {
-      const dateOfData = new Date(apiData.date).toLocaleDateString("en-US", {
+      const dateOfData = new Date().toLocaleDateString("en-US", {
         weekday: "long",
         day: "numeric",
         month: "long",
@@ -43,17 +63,27 @@ const Form = ({ title }) => {
     }
   };
 
-  const calculateResult = () => {
-    const getCurrencyRate = (key) =>
-      Object.values(apiData.rates).find((currency) => currency.code === key)
-        .value;
+  const calculateResult = (selectedCurrency: string, amount: string) => {
+    const getCurrencyRate = (key: string) => {
+      if (apiData.rates) {
+        const currency = Object.values(apiData.rates).find(
+          (currency) => currency.code === key
+        );
+        if (currency) {
+          return currency.value;
+        }
+      }
+    };
 
     const targetCurrencyRate = getCurrencyRate(selectedCurrency);
     const plnCurrencyRate = getCurrencyRate("PLN");
 
     setResult({
       sourceAmount: +amount,
-      targetAmount: amount * (targetCurrencyRate / plnCurrencyRate),
+      targetAmount:
+        +amount *
+        ((targetCurrencyRate ? targetCurrencyRate : 1) /
+          (plnCurrencyRate ? plnCurrencyRate : 1)),
       currency: selectedCurrency,
     });
   };
