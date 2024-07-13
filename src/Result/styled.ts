@@ -47,7 +47,7 @@ export const TargetAmount = styled.strong`
     }
     50% {
       color: ${({ theme }) => theme.color.boulder};
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
     100% {
       color: ${({ theme }) => theme.color.mineshaft};
