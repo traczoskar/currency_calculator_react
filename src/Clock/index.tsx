@@ -1,4 +1,4 @@
-import { useCurrentDate } from "./useCurrentDate";
+import { useCurrentDate } from "../hooks/useCurrentDate";
 import { ClockContainer, ClockPrompt } from "./styled";
 
 export const Clock = () => {
