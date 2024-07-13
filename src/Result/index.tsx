@@ -1,3 +1,4 @@
+import { ResultData } from "../types/types";
 import {
   ResultContainer,
   SourceAmount,
@@ -5,7 +6,11 @@ import {
   TargetAmount,
 } from "./styled";
 
-export const Result = ({ result }) => (
+interface ResultProps {
+  result: ResultData;
+}
+
+export const Result: React.FC<ResultProps> = ({ result }) => (
   <div>
     {result && (
       <ResultContainer>
