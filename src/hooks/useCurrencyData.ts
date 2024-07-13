@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { getApiData } from "./getApiData";
+import { getApiData } from "../utils/getApiData";
+import { CurrencyData } from "../types/types";
 
 export const useCurrencyData = () => {
-  const [apiData, setApiData] = useState({
+  const initialApiData: CurrencyData = {
     status: "loading",
-  });
+    rates: undefined,
+  };
+  const [apiData, setApiData] = useState<CurrencyData>(initialApiData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,7 +16,6 @@ export const useCurrencyData = () => {
         setApiData({
           status: "downloaded",
           rates: response.data,
-          date: response.meta.last_updated_at,
         });
       } catch (error) {
         setApiData({
@@ -22,7 +24,7 @@ export const useCurrencyData = () => {
       }
     };
 
-    setTimeout(fetchData, 4500);
+    setTimeout(fetchData, 3500);
   }, []);
 
   return apiData;
