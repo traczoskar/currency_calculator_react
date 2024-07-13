@@ -4,7 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals.js";
 import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./theme.js";
+import { theme } from "./theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
