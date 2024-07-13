@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { Result } from "../Result/index.js";
-import { Clock } from "../Clock/index.js";
+import { Result } from "../Result/index";
+import { Clock } from "../Clock/index";
 import {
   Wrapper,
   HeaderLogo,
@@ -14,24 +14,14 @@ import {
   ErrorInfo,
   ErrorSubInfo,
 } from "./styled";
-import { Loading } from "./Loading/index.js";
-import { useCurrencyData } from "./useCurrencyData.js";
+import { Loading } from "./Loading/index";
+import { useCurrencyData } from "../hooks/useCurrencyData";
 import header_logo from "../images/header_logo.png";
 import exchange_icon from "../images/exchange_icon.png";
+import { CurrencyData, ResultData } from "../types/types.js";
 
 interface FormProps {
   title: string;
-}
-
-interface CurrencyData {
-  status: string;
-  rates?: { [key: string]: { code: string; value: number } };
-}
-
-interface ResultData {
-  sourceAmount: number;
-  targetAmount: number;
-  currency: string;
 }
 
 const Form = ({ title }: FormProps) => {
