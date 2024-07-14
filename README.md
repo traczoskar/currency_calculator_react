@@ -2,7 +2,7 @@
 
 ### 📝&nbsp; **Description**
 
-Currency Calculator is a demo project of a currency converter made in **React.js** library. After you open the App it will fetch the current rates data from outside API. You can easily type in the amount of PLN (polish złoty), choose between many different currencies from API, then just click **"Calculate"** button and the magic will happen. My application will give you the result. There is also actual time prompt in the upper right corner of the app window and currency exchange current date over the calculate button.
+Currency Calculator is a currency converter made in **React.js** library. After you open the App it will fetch the current rates data from outside API. You can easily type in the amount of PLN (polish złoty), choose between many different currencies from API, then just click **"Calculate"** button and the magic will happen. My application will give you the result. There is also actual time prompt in the upper right corner of the app window and currency exchange current date over the calculate button.
 
 ### 🚀&nbsp; **[Currency Calculator - App link](https://traczoskar.github.io/currency_calculator_react/)** &nbsp; 👈
 
@@ -46,13 +46,14 @@ Currency Calculator is a demo project of a currency converter made in **React.js
 ## 🛠️&nbsp; Used technologies and conventions
 
 ![React](https://camo.githubusercontent.com/31b08faa61951179c95f91d42f8ce1b56012e80fa6e269d23221031d1b13fd0d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3631444146422e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d5265616374266c6f676f436f6c6f723d626c61636b)
+![TypeScript](https://img.shields.io/badge/TypeScript-222222.svg?style=for-the-badge&logo=typescript&logoColor=3178C6)
+![JavaScript ES6+](https://img.shields.io/badge/JavaScript_ES6+-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
 ![styled-components](https://img.shields.io/badge/styled_components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
 ![CustomHooks](https://img.shields.io/badge/CustomHooks-61DAFB.svg?style=for-the-badge&logo=react&logoColor=white)
 ![Create React App](https://img.shields.io/badge/Create_React_App-61DAFB.svg?style=for-the-badge&logo=react&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-56A9FA.svg?style=for-the-badge&logo=axios&logoColor=white)
 ![npm](https://img.shields.io/badge/npm-CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![Babel](https://img.shields.io/badge/Babel-F9DC3E.svg?style=for-the-badge&logo=babel&logoColor=black)
-![JavaScript ES6+](https://img.shields.io/badge/JavaScript_ES6+-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
 ![Error handling](https://img.shields.io/badge/Error_handling-FF5733.svg?style=for-the-badge&logo=error&logoColor=white)
 ![JS Async](https://img.shields.io/badge/JS_Async-6E4A7E.svg?style=for-the-badge&logo=javascript&logoColor=white)
 ![BEM](https://img.shields.io/badge/BEM-2B2B2B.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -62,6 +63,7 @@ Currency Calculator is a demo project of a currency converter made in **React.js
 
 - **React.js:** Components, JSX, React DOM rendering
 - **React Hooks:** useState, useEffect, useRef
+- **TypeScript**
 - **styled-components**
 - **CustomHooks**
 - **Create React App**
@@ -77,7 +79,7 @@ Currency Calculator is a demo project of a currency converter made in **React.js
 - **CSS:** (normalize.css) applied
 - **CSS:** (border-box: box-sizing) applied
 - **CSS:** media queries
-- **JS ES6 Features:** (arrays, methods, spread syntax, objects, arrow functions, immutabililty, merging, JS Modules)
+- **JS ES6 Features:** (destructuring, spread syntax, objects, arrow functions, immutabililty, merging, JS Modules)
 
 #### This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
