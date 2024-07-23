@@ -33,12 +33,33 @@ describe("useCurrencyData hook tests", () => {
     act(() => {
       jest.advanceTimersByTime(3500);
     });
+
     await waitFor(() => {
       expect(result.current.status).toBe("downloaded");
     });
+
     expect(result.current).toEqual({
       status: "downloaded",
       rates: mockData.data,
+    });
+  });
+
+  test("should return status error when fetching data failed", async () => {
+    (getApiData as jest.Mock).mockRejectedValue(
+      new Error("Failed to fetch data!")
+    );
+    const { result } = renderHook(useCurrencyData);
+
+    act(() => {
+      jest.advanceTimersByTime(3500);
+    });
+
+    await waitFor(() => {
+      expect(result.current.status).toBe("error");
+    });
+
+    expect(result.current).toEqual({
+      status: "error",
     });
   });
 });
