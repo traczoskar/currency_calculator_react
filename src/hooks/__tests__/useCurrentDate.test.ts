@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { useCurrentDate } from "hooks/useCurrentDate";
 
 describe("useCurrentDate hook tests", () => {
@@ -14,5 +14,16 @@ describe("useCurrentDate hook tests", () => {
   test("should return current date", () => {
     const { result } = renderHook(useCurrentDate);
     expect(result.current).toBeInstanceOf(Date);
+  });
+
+  test("should update the date every second", () => {
+    const { result } = renderHook(useCurrentDate);
+    const initialDate = result.current;
+
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    expect(result.current.getTime()).not.toEqual(initialDate.getTime());
+    expect(result.current.getTime()).toBeGreaterThan(initialDate.getTime());
   });
 });
