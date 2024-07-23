@@ -1,13 +1,13 @@
-import axios from "axios";
+import { ApiResponse } from "types/types";
 
 const apiURL =
   "https://api.currencyapi.com/v3/latest?apikey=cur_live_dJIiMBbmAZ9HJeKBX41En6P3lzSmOo04hm1Bg2m9";
 
-export const getApiData = async () => {
-  try {
-    const response = await axios.get(apiURL);
-    return response.data;
-  } catch (error: any) {
-    console.error("Error while fetching data:", error.message);
+export const getApiData = async (): Promise<ApiResponse> => {
+  const response = await fetch(apiURL);
+  const data: ApiResponse = await response.json();
+  if (!response.ok) {
+    throw new Error("Failed to fetch data!");
   }
+  return data;
 };
