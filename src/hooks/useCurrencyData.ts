@@ -15,7 +15,7 @@ export const useCurrencyData = () => {
         const response = await getApiData();
         setApiData({
           status: "downloaded",
-          rates: response.data,
+          rates: response ? response.data : undefined,
         });
       } catch (error) {
         setApiData({
