@@ -26,4 +26,12 @@ describe("useCurrentDate hook tests", () => {
     expect(result.current.getTime()).not.toEqual(initialDate.getTime());
     expect(result.current.getTime()).toBeGreaterThan(initialDate.getTime());
   });
+
+  test("should clear the interval on unmount", () => {
+    const { unmount } = renderHook(useCurrentDate);
+    const clearIntervalSpy = jest.spyOn(global, "clearInterval");
+
+    unmount();
+    expect(clearIntervalSpy).toHaveBeenCalled;
+  });
 });
