@@ -1,4 +1,5 @@
-import { getApiData } from "./getApiData";
+import { cleanup } from "@testing-library/react";
+import { getApiData } from "../getApiData";
 
 const originalFetch = global.fetch;
 
@@ -13,6 +14,10 @@ afterEach(() => {
 describe("get API data", () => {
   beforeEach(() => {
     jest.resetAllMocks();
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   test("should return data when fetch is successful", async () => {
