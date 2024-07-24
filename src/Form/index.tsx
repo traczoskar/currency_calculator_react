@@ -19,75 +19,52 @@ import { useCurrencyData } from "../hooks/useCurrencyData";
 import header_logo from "../images/header_logo.png";
 import exchange_icon from "../images/exchange_icon.png";
 import { CurrencyData, ResultData } from "../types/types.js";
+import { getExchangeRatesDate } from "utils/getExchangeRatesDate";
+import { calculateResult } from "utils/calculateResult";
 
 interface FormProps {
   title: string;
 }
 
-const Form = ({ title }: FormProps) => {
+const Form: React.FC<FormProps> = ({ title }) => {
   const apiData: CurrencyData = useCurrencyData();
   const initialResult: ResultData = {
     sourceAmount: 0,
-    targetAmount: 0,
+    targetAmount: "0",
     currency: "",
   };
   const [result, setResult] = useState<ResultData>(initialResult);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [amount, setAmount] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
   const onSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    calculateResult(selectedCurrency, amount);
-    inputRef?.current?.focus();
-  };
-
-  const getExchangeRatesDate = (): string | undefined => {
-    if (apiData.status === "downloaded") {
-      const dateOfData = new Date().toLocaleDateString("en-US", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      });
-      return dateOfData;
+    if (amount !== "" && apiData.status === "downloaded") {
+      const result = calculateResult(
+        selectedCurrency,
+        amount,
+        apiData
+      ) as ResultData;
+      const { sourceAmount, targetAmount, currency } = result;
+      setResult({ sourceAmount, targetAmount, currency });
     }
-  };
-
-  const calculateResult = (selectedCurrency: string, amount: string) => {
-    const getCurrencyRate = (key: string) => {
-      if (apiData.rates) {
-        const currency = Object.values(apiData.rates).find(
-          (currency) => currency.code === key
-        );
-        if (currency) {
-          return currency.value;
-        }
-      }
-    };
-
-    const targetCurrencyRate = getCurrencyRate(selectedCurrency);
-    const plnCurrencyRate = getCurrencyRate("PLN");
-
-    setResult({
-      sourceAmount: +amount,
-      targetAmount:
-        +amount *
-        ((targetCurrencyRate ? targetCurrencyRate : 1) /
-          (plnCurrencyRate ? plnCurrencyRate : 1)),
-      currency: selectedCurrency,
-    });
+    inputRef?.current?.focus();
+    setAmount("");
   };
 
   return (
-    <Wrapper onSubmit={onSubmit}>
+    <Wrapper data-testid="form" onSubmit={onSubmit}>
       <Clock />
       <HeaderLogo src={header_logo} alt="header_logo" />
-      <Legend>{title}</Legend>
+      <Legend data-testid="title">{title}</Legend>
       {apiData.status === "loading" ? (
         <Loading />
       ) : apiData.status === "error" ? (
         <>
-          <ErrorInfo>No currencies available at the moment.</ErrorInfo>
+          <ErrorInfo data-testid="error">
+            No currencies available at the moment.
+          </ErrorInfo>
           <ErrorSubInfo>Sorry, please try again later.</ErrorSubInfo>
         </>
       ) : (
@@ -104,6 +81,7 @@ const Form = ({ title }: FormProps) => {
               max="10000000000"
               min="0.01"
               required
+              data-testid="input"
             />
           </Label>
           <Label>
@@ -114,20 +92,21 @@ const Form = ({ title }: FormProps) => {
               onChange={({ target }) => setSelectedCurrency(target.value)}
               name="currency"
               required
+              data-testid="select"
             >
               {apiData.rates &&
                 Object.keys(apiData.rates).map((currency) => (
-                  <option key={currency} value={currency}>
+                  <option data-testid="option" key={currency} value={currency}>
                     {currency}
                   </option>
                 ))}
             </InputWindow>
           </Label>
-          <RatesDate>
+          <RatesDate data-testid="rates-date">
             Exchange rates current as of:{" "}
-            <strong>{getExchangeRatesDate()}</strong>
+            <strong>{getExchangeRatesDate(apiData)}</strong>
           </RatesDate>
-          <Button>
+          <Button data-testid="calculate-btn">
             <CalculateIcon src={exchange_icon} alt="exchange_icon" />
             Calculate
           </Button>
