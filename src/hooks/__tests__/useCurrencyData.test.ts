@@ -1,4 +1,4 @@
-import { act, renderHook, waitFor } from "@testing-library/react";
+import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 import { useCurrencyData } from "hooks/useCurrencyData";
 import { getApiData } from "utils/getApiData";
 
@@ -12,6 +12,7 @@ describe("useCurrencyData hook tests", () => {
   afterEach(() => {
     jest.useRealTimers();
     jest.resetAllMocks();
+    cleanup();
   });
 
   test("should return status loading firstly", () => {
@@ -24,7 +25,8 @@ describe("useCurrencyData hook tests", () => {
       meta: { last_updated_at: "2023-07-23T23:59:59Z" },
       data: {
         USD: { code: "USD", value: 1 },
-        EUR: { code: "EUR", value: 0.89 },
+        PLN: { code: "PLN", value: 3.9277606978 },
+        EUR: { code: "EUR", value: 0.9181001514 },
       },
     };
     (getApiData as jest.Mock).mockResolvedValue(mockData);
