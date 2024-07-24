@@ -45,4 +45,18 @@ describe("calculateResult", () => {
       currency: "EUR",
     });
   });
+
+  test("should prompt an alert that input value can't be less than 0.01", () => {
+    calculateResult("USD", "0.009", mockApiData);
+    expect(window.alert).toHaveBeenCalledWith("Amount can't be less than 0.01");
+  });
+
+  test("should calculate proper result for amount equal to 0.01", () => {
+    const result = calculateResult("USD", "0.01", mockApiData);
+    expect(result).toEqual({
+      sourceAmount: 0.01,
+      targetAmount: "0.00",
+      currency: "USD",
+    });
+  });
 });
