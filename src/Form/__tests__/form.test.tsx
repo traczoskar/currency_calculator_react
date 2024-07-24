@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { useCurrencyData } from "../../hooks/useCurrencyData";
 import { theme } from "theme";
 import Form from "../index";
+import userEvent from "@testing-library/user-event";
 
 jest.mock("../../hooks/useCurrencyData");
 
@@ -101,5 +102,42 @@ describe("renders a Form component and its children", () => {
     renderForm();
     const ratesDateElement = screen.queryByTestId("rates-date");
     expect(document.body.contains(ratesDateElement)).toBeFalsy();
+  });
+});
+
+describe("calculates the exchange rate correctly", () => {
+  beforeEach(() => {
+    (useCurrencyData as jest.Mock).mockReturnValue(mockApiData);
+  });
+
+  afterAll(() => {
+    cleanup();
+    jest.clearAllMocks();
+  });
+
+  test("should calculate 8355.00 PLN to USD exchange properly", async () => {
+    renderForm();
+    const { input, select, calculateBtn } = getFormControls();
+    await userEvent.type(input, "8355.00");
+    await userEvent.selectOptions(select, "USD");
+    await userEvent.click(calculateBtn);
+    await waitFor(() => {
+      expect(screen.getByTestId("result-container")).toBeInTheDocument();
+      expect(screen.getByTestId("result")).toHaveTextContent("2127.17 USD");
+      expect(screen.getByText(/2127\.17 USD/)).toBeInTheDocument();
+    });
+  });
+
+  test("should calculate 325.00 PLN to EUR exchange properly", async () => {
+    renderForm();
+    const { input, select, calculateBtn } = getFormControls();
+    await userEvent.type(input, "325.00");
+    await userEvent.selectOptions(select, "EUR");
+    await userEvent.click(calculateBtn);
+    await waitFor(() => {
+      expect(screen.getByTestId("result-container")).toBeInTheDocument();
+      expect(screen.getByTestId("result")).toHaveTextContent("75.97 EUR");
+      expect(screen.getByText(/75\.97 EUR/)).toBeInTheDocument();
+    });
   });
 });
