@@ -68,4 +68,13 @@ describe("renders a Form component and its children", () => {
       screen.getByText("No currencies available at the moment.")
     ).toBeInTheDocument();
   });
+
+  test("should render currencies list in select window", () => {
+    (useCurrencyData as jest.Mock).mockReturnValue(mockApiData);
+    renderForm();
+    expect(screen.getByTestId("select")).toContainHTML("option");
+    expect(screen.getAllByTestId("option")).toHaveLength(3);
+    const options = screen.getAllByTestId("option");
+    expect(options[0]).toHaveTextContent("USD");
+  });
 });
