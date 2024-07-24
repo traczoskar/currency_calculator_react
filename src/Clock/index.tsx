@@ -15,7 +15,7 @@ export const Clock = () => {
   });
 
   return (
-    <ClockContainer>
+    <ClockContainer data-testid="clock">
       Today is&nbsp;
       <ClockPrompt>{formattedDate}</ClockPrompt>
     </ClockContainer>
