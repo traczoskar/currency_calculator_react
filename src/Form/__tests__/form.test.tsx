@@ -160,4 +160,15 @@ describe("calculates the exchange rate correctly", () => {
     expect(alertMock).toHaveBeenCalledWith("Amount can't be less than 0.01");
     alertMock.mockRestore();
   });
+
+  test("should clear the input field after calculation", async () => {
+    renderForm();
+    const { input, select, calculateBtn } = getFormControls();
+    await userEvent.type(input, "1000.00");
+    await userEvent.selectOptions(select, "USD");
+    await userEvent.click(calculateBtn);
+    await waitFor(() => {
+      expect(input.value).toBe("");
+    });
+  });
 });
