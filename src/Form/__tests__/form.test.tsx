@@ -48,4 +48,24 @@ describe("renders a Form component and its children", () => {
     expect(screen.queryByTestId("loading")).not.toBeInTheDocument();
     expect(screen.queryByTestId("error")).not.toBeInTheDocument();
   });
+
+  test("should render Loading window when API data is not downloaded yet", () => {
+    (useCurrencyData as jest.Mock).mockReturnValue({
+      status: "loading",
+    });
+    renderForm();
+    expect(screen.getByTestId("loading")).toBeInTheDocument();
+    expect(screen.getByText("Loading currency rates ...")).toBeInTheDocument();
+  });
+
+  test("should render Error window when API data fetching has failed", () => {
+    (useCurrencyData as jest.Mock).mockReturnValue({
+      status: "error",
+    });
+    renderForm();
+    expect(screen.getByTestId("error")).toBeInTheDocument();
+    expect(
+      screen.getByText("No currencies available at the moment.")
+    ).toBeInTheDocument();
+  });
 });
