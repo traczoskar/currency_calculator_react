@@ -13,11 +13,11 @@ interface ResultProps {
 export const Result: React.FC<ResultProps> = ({ result }) => (
   <div>
     {result && (
-      <ResultContainer>
+      <ResultContainer data-testid="result-container">
         <SourceAmount>{result.sourceAmount.toFixed(2)} PLN</SourceAmount>
         <ResultInfo>After calculation:</ResultInfo>
-        <TargetAmount>
-          {result.targetAmount.toFixed(2)} {result.currency}
+        <TargetAmount data-testid="result">
+          {result.targetAmount} {result.currency}
         </TargetAmount>
       </ResultContainer>
     )}
