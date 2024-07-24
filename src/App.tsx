@@ -2,7 +2,7 @@ import Form from "./Form";
 
 function App() {
   return (
-    <main>
+    <main data-testid="main">
       <Form title="CURRENCY CALCULATOR" />
     </main>
   );
