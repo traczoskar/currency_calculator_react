@@ -77,4 +77,29 @@ describe("renders a Form component and its children", () => {
     const options = screen.getAllByTestId("option");
     expect(options[0]).toHaveTextContent("USD");
   });
+
+  test("should prompt current date of currency rates data when data is downloaded", () => {
+    (useCurrencyData as jest.Mock).mockReturnValue(mockApiData);
+    renderForm();
+    const currentDate = new Date().toLocaleDateString("en-US", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    expect(screen.getByTestId("rates-date")).toHaveTextContent(currentDate);
+    expect(
+      screen.getByText("Exchange rates current as of:")
+    ).toBeInTheDocument();
+  });
+
+  test("shouldn't prompt current date of currency rates data when data isn't downloaded", () => {
+    (useCurrencyData as jest.Mock).mockReturnValue({
+      status: "loading",
+      rates: {},
+    });
+    renderForm();
+    const ratesDateElement = screen.queryByTestId("rates-date");
+    expect(document.body.contains(ratesDateElement)).toBeFalsy();
+  });
 });
