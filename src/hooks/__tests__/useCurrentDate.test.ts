@@ -1,4 +1,4 @@
-import { act, renderHook } from "@testing-library/react";
+import { act, cleanup, renderHook } from "@testing-library/react";
 import { useCurrentDate } from "hooks/useCurrentDate";
 
 describe("useCurrentDate hook tests", () => {
@@ -9,6 +9,7 @@ describe("useCurrentDate hook tests", () => {
   afterEach(() => {
     jest.useRealTimers();
     jest.resetAllMocks();
+    cleanup();
   });
 
   test("should return current date", () => {
@@ -20,9 +21,7 @@ describe("useCurrentDate hook tests", () => {
     const { result } = renderHook(useCurrentDate);
     const initialDate = result.current;
 
-    act(() => {
-      jest.advanceTimersByTime(1000);
-    });
+    act(() => jest.advanceTimersByTime(1000));
     expect(result.current.getTime()).not.toEqual(initialDate.getTime());
     expect(result.current.getTime()).toBeGreaterThan(initialDate.getTime());
   });
