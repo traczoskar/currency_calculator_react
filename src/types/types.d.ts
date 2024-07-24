@@ -10,6 +10,6 @@ export interface ApiResponse {
 
 export interface ResultData {
   sourceAmount: number;
-  targetAmount: number;
+  targetAmount: string;
   currency: string;
 }
