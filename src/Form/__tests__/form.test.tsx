@@ -140,4 +140,24 @@ describe("calculates the exchange rate correctly", () => {
       expect(screen.getByText(/75\.97 EUR/)).toBeInTheDocument();
     });
   });
+
+  test("should prompt alert when input amount is less than 0.01", async () => {
+    const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
+    renderForm();
+    const { input, calculateBtn } = getFormControls();
+    await userEvent.type(input, "0.009");
+    await userEvent.click(calculateBtn);
+    expect(alertMock).toHaveBeenCalledWith("Amount can't be less than 0.01");
+    alertMock.mockRestore();
+  });
+
+  test("should prompt alert when input amount is a negative number", async () => {
+    const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
+    renderForm();
+    const { input, calculateBtn } = getFormControls();
+    await userEvent.type(input, "-100");
+    await userEvent.click(calculateBtn);
+    expect(alertMock).toHaveBeenCalledWith("Amount can't be less than 0.01");
+    alertMock.mockRestore();
+  });
 });
